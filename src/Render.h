@@ -12,12 +12,10 @@ public:
 	Entity *player;
 public:
 	void	init();
-	void	    draw_scene(Animator * animator, Scene* scene, Camera* cam);
-	void	    draw_pbr(Scene *scene, Camera *cam);
-	void    	draw_skybox(Skybox *skybox, Camera* cam);
-    void        draw_child(Entity* ent, Animator *animator,  Scene *scene, Camera *cam, mat4 par_model);
-    void        draw_landscape(Landscape* landscape, Camera *cam);
-    void        draw_water(Water* water, Camera *cam);
+	void	draw_scene(Animator * animator, Scene* scene, Camera* cam);
+	void    draw_skybox(Skybox *skybox, Camera* cam);
+	void	draw_landscape(Scene* scene, Landscape* landscape, Camera* cam);
+    void    draw_water(Water* water, Camera *cam);
 public:
 	std::string animation_key;
 	float       scaler = 1.0f;

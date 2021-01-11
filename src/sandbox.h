@@ -4,5 +4,6 @@
 class Sandbox
 {
 public:
+	~Sandbox();
 	void	place_ent(Engine* eng);
 };

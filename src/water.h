@@ -14,22 +14,22 @@ struct water_point
 		level = 0.0f;
 		sum_level = 0.0f;
 		z = 0.0f;
+		rend_level = 0.0f;
 	};
 };
 
 class Water
 {
 public:
-	water_point*			water_map;
-	Landscape*				land;
-	float*					vertices;
-	bool*					flow_map;
+	water_point* water_map;
+	Landscape* land;
+	float* vertices;
 	unsigned int			vbo;
 	unsigned int			vao;
 	int						shader_id;
 	int						map_size;
-	float					step = 0.002f;
-	bool                    wave_start = false;
+	float					step;
+	bool                    wave_start;
 public:
 	~Water();
 	void	init(Landscape* land);
@@ -40,5 +40,5 @@ public:
 	void	rain();
 	void	flow();
 private:
-    void recalc(int i);
+	void recalc(int i);
 };

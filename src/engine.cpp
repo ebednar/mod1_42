@@ -106,12 +106,9 @@ void Engine::run_engine()
 		cam.yaw = controls.yaw;
 		cam.pitch = controls.pitch;
 
-//        water.raise();
-//        water.wave();
-        water.rain();
-        water.flow();
-        water.flow();
-        water.flow();
+        water.raise();
+        //water.wave();
+        //water.rain();
         water.flow();
         water.flow();
         water.flow();

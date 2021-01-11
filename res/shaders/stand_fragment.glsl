@@ -55,4 +55,5 @@ void main()
 		result += specular;
 	
 	fColor = vec4(result, 1.0f);
+	//fColor = vec4(material.diffuse, 1.0f);
 }

@@ -13,5 +13,5 @@ uniform mat4 u_P;
 void main()
 {
     gl_Position = u_P * u_V * u_M * vec4(position, 1.0f);
-    vColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
+    vColor = vec4(1.0f, 221.0f / 256.0f, 81.0f / 256.0f, 1.0f);
 }

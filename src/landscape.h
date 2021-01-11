@@ -8,7 +8,7 @@ struct point
 	float	x;
 	float	y;
 	float	z;
-	point() 
+	point()
 	{
 		x = 0.0f;
 		y = 0.0f;
@@ -20,15 +20,16 @@ class Landscape
 {
 public:
 	std::vector<glm::vec3>	displacements;
-	point					*map;
+	point*					map;
 	int						map_size;
 	unsigned int			vbo;
+	unsigned int			vbo_norm;
 	unsigned int			vao;
 	int						shader_id;
 public:
 	Landscape();
 	~Landscape();
-	void	load_map(std::string path);
+	int		load_map(std::string path);
 	void	build_heights();
 	void	vertex_buffer();
 	void	set_shader(const char* vPath, const char* fSPath);
