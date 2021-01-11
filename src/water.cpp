@@ -25,6 +25,8 @@ void	Water::init(Landscape* land)
     step = 0.002f;
     w_state = water_state::raise;
     wave_start = false;
+    rain_pow = 2;
+    tension = 0.002f;
 }
 
 void	Water::vertex_buffer()
@@ -57,7 +59,6 @@ void    Water::reset()
         water_map[i].sum_level = water_map[i].level + land->map[i].y;
         water_map[i].rend_level = 0.0f;
     }
-    step = 0.002f;
     wave_start = false;
 }
 
@@ -71,7 +72,6 @@ void	Water::raise()
                 water_map[y * map_size + x].level += step;
         }
     }
-    //std::cout << "water level" << water_map[0].level << std::endl;
 }
 
 void    Water::wave()
@@ -90,7 +90,7 @@ void    Water::wave()
 
 void    Water::rain()
 {
-    for (int j = 0; j < 2; ++j)
+    for (int j = 0; j < rain_pow; ++j)
     {
         int i = rand() % ((map_size) * (map_size));
         float drop = 1.0f * step;
@@ -124,7 +124,7 @@ void	Water::flow()
     {
         for (int x = 0; x < map_size; ++x)
         {
-            if (water_map[y * map_size + x].level <= step)
+            if (water_map[y * map_size + x].level <= tension)
                 continue;
 
             if (x < map_size - 1 && water_map[y * map_size + x].level > 0.0f

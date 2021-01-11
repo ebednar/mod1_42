@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 3.10)
 #set(CMAKE_CXX_COMPILER  "/usr/bin/clang++")
 #set(CMAKE_C_COMPILER  "/usr/bin/clang")
 set(CMAKE_CXX_STANDARD 17)
-set(PROJECT_NAME humangl)
+set(PROJECT_NAME mod1)
 
 project(${PROJECT_NAME})
 add_compile_options(
     # -Werror
-	-g
+        -g3
 #    -Wall
 #        -Wextra
     # -Wpedantic
@@ -51,7 +51,7 @@ set(SOURCEFILES
         libs/imgui/imgui_tables.cpp
     src/engine.cpp src/Entity.cpp src/Events.cpp src/Model.cpp src/Render.cpp src/Shader.cpp src/skybox.cpp src/sandbox.cpp src/scene.cpp
         src/maths.cpp src/Animator.cpp src/Animator.h src/Animation.cpp src/Animation.h src/AnimationKey.cpp src/AnimationKey.h
-        src/landscape.cpp src/water.cpp)
+        src/landscape.cpp src/water.cpp src/rain.cpp)
 include_directories(${INCLUDES})
 add_executable(${PROJECT_NAME} ${SOURCEFILES})
 link_directories(${INCLUDES}

@@ -8,7 +8,7 @@ Sandbox::~Sandbox()
 
 void Sandbox::place_ent(Engine* eng)
 {
-	if (eng->landscape.load_map("map.mod1"))
+	if (eng->landscape.load_map("demo5.mod1"))
 		exit(1);
 	eng->landscape.build_heights();
 	eng->landscape.vertex_buffer();
@@ -23,7 +23,7 @@ void Sandbox::place_ent(Engine* eng)
 	Entity* light = new Entity();
 	light->set_model(lightMod);
 	eng->add_entity(light);
-	light->set_color(1.0f, 221.0f / 256.0f, 81.0f / 256.0f);
+	light->set_color(1.0f, 225.0f / 256.0f, 90.0f / 256.0f);
 	glm::vec3 lightPositions(0.0f, 2.0f, 0.0f);
 	light->move_to(lightPositions.x, lightPositions.y, lightPositions.z);
 	light->scale(0.2f, 0.2f, 0.2f);
@@ -31,7 +31,7 @@ void Sandbox::place_ent(Engine* eng)
 
 	eng->rain.init();
 	eng->rain.vertex_buffer();
-	eng->rain.set_shader("res/shaders/water_vertex.glsl", "res/shaders/water_fragment.glsl");
+	eng->rain.set_shader("res/shaders/rain_vertex.glsl", "res/shaders/rain_fragment.glsl");
 
 	//system("afplay res/music/Day.mp3 -v 0.9 &");
 }

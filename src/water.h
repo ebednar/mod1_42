@@ -34,7 +34,9 @@ public:
 	unsigned int			vao;
 	int						shader_id;
 	int						map_size;
+	int                     rain_pow;
 	float					step;
+	float					tension;
 	bool                    wave_start;
 public:
 	~Water();

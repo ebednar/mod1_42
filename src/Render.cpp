@@ -6,7 +6,7 @@
 
 void Render::init()
 {
-    projection = perspective(60.0f * M_PI / 180.0f, 640.0f / 480.0f, 0.1f, 100.0f);
+    projection = perspective(60.0f * M_PI / 180.0f, 1280.0f / 720.0f, 0.1f, 100.0f);
     animation_key = "idle";
 }
 
@@ -80,12 +80,12 @@ void    Render::draw_landscape(Scene* scene, Landscape* landscape, Camera* cam)
     glUniform3f(glGetUniformLocation(landscape->shader_id, "viewPos"), cam->pos.x, cam->pos.y, cam->pos.z);
     glUniform3f(glGetUniformLocation(landscape->shader_id, "material.specular"), 0.4f, 0.4f, 0.4f);
     glUniform1f(glGetUniformLocation(landscape->shader_id, "material.shininess"), 16.0f);
-    glUniform3f(glGetUniformLocation(landscape->shader_id, "light.ambient"), 0.3f, 0.3f, 0.3f);
+    glUniform3f(glGetUniformLocation(landscape->shader_id, "light.ambient"), 0.8f, 0.8f, 0.8f);
     glUniform3f(glGetUniformLocation(landscape->shader_id, "light.diffuse"), scene->point_lights[0].color.x, scene->point_lights[0].color.y, scene->point_lights[0].color.z);
     glUniform3f(glGetUniformLocation(landscape->shader_id, "light.specular"), 0.5f, 0.5f, 0.5f);
     glUniform1f(glGetUniformLocation(landscape->shader_id, "light.constant"), 1.0f);
-    glUniform1f(glGetUniformLocation(landscape->shader_id, "light.linear"), 0.045f);
-    glUniform1f(glGetUniformLocation(landscape->shader_id, "light.quadratic"), 0.0075f);
+    glUniform1f(glGetUniformLocation(landscape->shader_id, "light.linear"), 0.027f);
+    glUniform1f(glGetUniformLocation(landscape->shader_id, "light.quadratic"), 0.0028f);
 
     glBindVertexArray(landscape->vao);
     glDrawArrays(GL_TRIANGLES, 0, (landscape->map_size - 1) * (landscape->map_size - 1) * 3 * 2);

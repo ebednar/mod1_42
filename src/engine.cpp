@@ -119,27 +119,44 @@ void Engine::run_engine()
 			water.rain();
 			rain.rainfall();
 		}
+
 		water.flow();
-		/*water.flow();
-		water.flow();*/
+		water.flow();
+		water.flow();
+		water.flow();
+		water.flow();
 
 		cam.update_free();
 		rend.draw_skybox(&skybox, &cam);
 		rend.draw_scene(&animator, &scene, &cam);
-        rend.draw_landscape(&landscape, &cam);
+        rend.draw_landscape(&scene, &landscape, &cam);
         rend.draw_water(&water, &cam);
-		rend.draw_rain(&rain, &cam);
+        if (water.w_state == water_state::rain)
+        {
+            rend.draw_rain(&rain, &cam);
+        }
 		//rend.draw_pbr(&scene, &cam);
 
-        ImGui::Begin("HumanGL");
+        ImGui::Begin("mod1");
         ImGui::Text("Use buttons to change scenario"); // Display some text (you can use a format strings too)
         if (ImGui::Button("Raise"))
-  			rend.animation_key = "idle";
+        {
+            water.reset();
+            water.w_state = water_state::raise;
+        }
        	if (ImGui::Button("Wave"))
-			rend.animation_key = "run";
+        {
+            water.reset();
+            water.w_state = water_state::wave;
+        }
        	if (ImGui::Button("Rain"))
-			rend.animation_key = "jump";
-        ImGui::SliderFloat("step", &water.step, 0.002f, 0.006f);
+        {
+            water.reset();
+            water.w_state = water_state::rain;
+        }
+       	ImGui::SliderFloat("step", &water.step, 0.002f, 0.006f);
+       	ImGui::SliderFloat("water tension", &water.tension, 0.0001f, 0.006f);
+       	ImGui::SliderInt("rain power", &water.rain_pow, 2, 20);
         ImGui::End();
         ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

@@ -48,7 +48,7 @@ void    Rain::rainfall()
 {
     for (int i = 0; i < drops_number; ++i)
     {
-        drops[i].y -= 0.04;
+        drops[i].y -= 0.08;
         if (drops[i].y <= 0)
         {
             float rx = rand() % 10;
