@@ -29,5 +29,9 @@ void Sandbox::place_ent(Engine* eng)
 	light->scale(0.2f, 0.2f, 0.2f);
 	eng->add_light_source(lightPositions, glm::vec3(1.0f, 221.0f / 256.0f, 81.0f / 256.0f));
 
+	eng->rain.init();
+	eng->rain.vertex_buffer();
+	eng->rain.set_shader("res/shaders/water_vertex.glsl", "res/shaders/water_fragment.glsl");
+
 	//system("afplay res/music/Day.mp3 -v 0.9 &");
 }

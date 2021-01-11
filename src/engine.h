@@ -3,10 +3,6 @@
 #include <GLFW/glfw3.h>
 #include "render.h"
 #include "events.h"
-#include "skybox.h"
-#include "scene.h"
-#include "landscape.h"
-#include "water.h"
 
 class Engine {
 public:
@@ -19,6 +15,7 @@ public:
 	Skybox						skybox;
     Landscape					landscape;
     Water						water;
+	Rain						rain;
 	Entity						*player;
 	bool						free_cam;
 	bool						close_eng;

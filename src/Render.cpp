@@ -215,3 +215,29 @@ void    Render::draw_water(Water* water, Camera* cam)
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 }
+
+void    Render::draw_rain(Rain* rain, Camera* cam)
+{
+    int k = 0;
+    for (int i = 0; i < rain->drops_number; ++i)
+    {
+        rain->vertices[k + 0] = rain->drops[i].x;
+        rain->vertices[k + 1] = rain->drops[i].y;
+        rain->vertices[k + 2] = rain->drops[i].z;
+        rain->vertices[k + 3] = rain->drops[i].x;
+        rain->vertices[k + 4] = rain->drops[i].y - 0.4f;
+        rain->vertices[k + 5] = rain->drops[i].z;
+        k += 6;
+    }
+    glUseProgram(rain->shader_id);
+    unsigned int view_loc = glGetUniformLocation(rain->shader_id, "u_V");
+    glUniformMatrix4fv(view_loc, 1, GL_FALSE, cam->view.mat);
+    unsigned int proj_loc = glGetUniformLocation(rain->shader_id, "u_P");
+    glUniformMatrix4fv(proj_loc, 1, GL_FALSE, projection.mat);
+    glBindVertexArray(rain->vao);
+    glBindBuffer(GL_ARRAY_BUFFER, rain->vbo);
+    glBufferData(GL_ARRAY_BUFFER, rain->drops_number * 6 * sizeof(float), rain->vertices, GL_DYNAMIC_DRAW);
+    glDrawArrays(GL_LINES, 0, rain->drops_number * 2);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
+}

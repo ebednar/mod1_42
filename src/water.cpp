@@ -23,6 +23,7 @@ void	Water::init(Landscape* land)
         water_map[i].rend_level = 0.0f;
     }
     step = 0.002f;
+    w_state = water_state::raise;
     wave_start = false;
 }
 
@@ -44,6 +45,20 @@ void	Water::vertex_buffer()
 void	Water::set_shader(const char* vPath, const char* fSPath)
 {
     create_shader(&shader_id, vPath, fSPath);
+}
+
+void    Water::reset()
+{
+    for (int i = 0; i < map_size * map_size; ++i)
+    {
+        water_map[i].x = land->map[i].x;
+        water_map[i].z = land->map[i].z;
+        water_map[i].level = 0.0f;
+        water_map[i].sum_level = water_map[i].level + land->map[i].y;
+        water_map[i].rend_level = 0.0f;
+    }
+    step = 0.002f;
+    wave_start = false;
 }
 
 void	Water::raise()

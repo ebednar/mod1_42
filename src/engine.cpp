@@ -106,20 +106,29 @@ void Engine::run_engine()
 		cam.yaw = controls.yaw;
 		cam.pitch = controls.pitch;
 
-        water.raise();
-        //water.wave();
-        //water.rain();
-        water.flow();
-        water.flow();
-        water.flow();
-        water.flow();
-        water.flow();
+		if (water.w_state == water_state::raise)
+		{
+			water.raise();
+		}
+		else if (water.w_state == water_state::wave)
+		{
+			water.wave();
+		}
+		else if (water.w_state == water_state::rain)
+		{
+			water.rain();
+			rain.rainfall();
+		}
+		water.flow();
+		/*water.flow();
+		water.flow();*/
 
 		cam.update_free();
 		rend.draw_skybox(&skybox, &cam);
 		rend.draw_scene(&animator, &scene, &cam);
         rend.draw_landscape(&landscape, &cam);
         rend.draw_water(&water, &cam);
+		rend.draw_rain(&rain, &cam);
 		//rend.draw_pbr(&scene, &cam);
 
         ImGui::Begin("HumanGL");
