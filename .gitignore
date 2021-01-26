@@ -53,4 +53,4 @@ cmake-build-debug
 *.exe.manifest
 *.exe
 !build/anchor
-humangl
+mod1
