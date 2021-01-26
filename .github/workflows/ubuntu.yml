@@ -16,5 +16,7 @@ jobs:
         run: sudo apt update && sudo apt install mesa-common-dev libxrandr-dev libxrender-dev libxi-dev liblxi-dev libxfixes-dev libxxf86vm-dev libxext-dev libxinerama-dev libx11-xcb-dev libxau-dev libxdmcp-dev libxcursor-dev libglfw3-dev
       - name: sub
         run: git submodule update --init --recursive
+      - name: dir
+        run: mkdir build
       - name: cmake
         run: cd build && cmake .. && make
