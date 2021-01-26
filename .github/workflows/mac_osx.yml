@@ -1,0 +1,19 @@
+name: C/C++ CI MAC_OSX
+
+on:
+  push:
+    branches: [ master, development]
+  pull_request:
+    branches: [ master, development]
+
+jobs:
+  build:
+      runs-on: macos-latest
+      steps:
+      - uses: actions/checkout@v1
+      - name: sub
+        run: git submodule update --init --recursive
+      - name: dir
+        run: mkdir build
+      - name: cmake
+        run: cd build && cmake .. && make

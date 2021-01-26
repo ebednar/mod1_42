@@ -32,8 +32,7 @@ set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 #add_subdirectory(./libs/glfw/)
- add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/libs/glfw/)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/libs/assimp/)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/libs/glfw/)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/..)
 set(INCLUDES
     include/
