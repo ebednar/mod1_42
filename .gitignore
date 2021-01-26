@@ -52,7 +52,6 @@ build/*
 cmake-build-debug
 *.exe.manifest
 *.exe
-cmake
 !build/anchor
 humangl
 humagl
