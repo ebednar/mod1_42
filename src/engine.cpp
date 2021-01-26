@@ -28,7 +28,7 @@ void Engine::init_engine(int width, int height)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	window = glfwCreateWindow(width, height, "HumanGL", NULL, NULL);
+	window = glfwCreateWindow(width, height, "Mod1", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
